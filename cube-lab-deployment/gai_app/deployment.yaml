@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gai-app
+  namespace: cube-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gai-app
+  template:
+    metadata:
+      labels:
+        app: gai-app
+    spec:
+      containers:
+        - name: gai-app
+          image: 335665511038.dkr.ecr.ap-northeast-1.amazonaws.com/cube-lab/gai-app
+          ports:
+            - containerPort: 8080
+          env:
+            - name: AZURE_OPENAI_API_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_API_KEY
+            - name: AZURE_OPENAI_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_ENDPOINT
+            - name: AZURE_OPENAI_API_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_API_VERSION
+            - name: AZURE_OPENAI_CHAT_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_CHAT_DEPLOYMENT_NAME
+            - name: AZURE_OPENAI_EMBEDDING_API_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_EMBEDDING_API_KEY
+            - name: AZURE_OPENAI_EMBEDDING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_EMBEDDING_ENDPOINT
+            - name: AZURE_OPENAI_EMBEDDING_API_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_EMBEDDING_API_VERSION
+            - name: AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME
+            - name: CHROMA_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: CHROMA_HOST
+            - name: CHROMA_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: CHROMA_PORT
+            - name: TRACKING_SERVER_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: TRACKING_SERVER_URI
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: DB_USER
+            - name: DB_PWD
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: DB_PWD
+            - name: DB_DSN
+              valueFrom:
+                configMapKeyRef:
+                  name: gai-app-config
+                  key: DB_DSN

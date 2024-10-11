@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: chroma-config
+   namespace: cube-lab
+data:
+   IS_PERSISTENT: "TRUE"
+   ANONYMIZED_TELEMETRY: "TRUE"

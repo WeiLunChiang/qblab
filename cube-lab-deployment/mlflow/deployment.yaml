@@ -22,13 +22,19 @@ spec:
             - "mlflow"
             - "server"
             - "--backend-store-uri"
-            - "postgresql://postgres:postgres@postgres:5432/mlflow"
+            - "$(BACKEND_STORE_URI)"
             - "--default-artifact-root"
             - "/mlruns"
             - "--host"
             - "0.0.0.0"
             - "--port"
             - "5000"
+          env:
+            - name: BACKEND_STORE_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: mlflow-config
+                  key: BACKEND_STORE_URI
           volumeMounts:
             - mountPath: /mlruns
               name: mlflow-artifacts

@@ -20,9 +20,15 @@ spec:
             - containerPort: 8000
           env:
             - name: IS_PERSISTENT
-              value: "TRUE"
+              valueFrom:
+                configMapKeyRef:
+                  name: chroma-config
+                  key: IS_PERSISTENT
             - name: ANONYMIZED_TELEMETRY
-              value: "TRUE"
+              valueFrom:
+                configMapKeyRef:
+                  name: chroma-config
+                  key: ANONYMIZED_TELEMETRY
           volumeMounts:
             - mountPath: /chroma/chroma
               name: chromadb-storage

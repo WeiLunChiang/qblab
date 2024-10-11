@@ -82,7 +82,7 @@ async def chat(request: Request):
         logger.info("Processed successfully", extra=response.MWHEADER.dict())
     finally:
         logger.info("Return Response", extra=response.dict())
-        return orjson.dumps(response.dict())
+        return response.dict()
 
 @app.post("/api/card-consumption/genai-response")
 # @mlflow_exception_logger
@@ -131,7 +131,7 @@ async def gai_response(request: Request):
         logger.info("Processed successfully", extra=response.MWHEADER.dict())
     finally:
         logger.info("Return Response", extra=response.dict())
-        return orjson.dumps(response.dict())
+        return response.dict()
 
 @app.post("/api/card-consumption/evaluate")
 async def evaluate(request: Request):
@@ -168,7 +168,7 @@ async def evaluate(request: Request):
         logger.info("Processed successfully", extra=response.MWHEADER.dict())
     finally:
         logger.info("Return Response", extra=response.dict())
-        return orjson.dumps(response.dict())
+        return response.dict()
 
 
 if __name__ == "__main__":    

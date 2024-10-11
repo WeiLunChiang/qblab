@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: gai-app-config
+   namespace: cube-lab
+data:
+   AZURE_OPENAI_API_KEY: ""
+   AZURE_OPENAI_ENDPOINT: ""
+   AZURE_OPENAI_API_VERSION: ""
+   AZURE_OPENAI_CHAT_DEPLOYMENT_NAME: ""
+   AZURE_OPENAI_EMBEDDING_API_KEY: ""
+   AZURE_OPENAI_EMBEDDING_ENDPOINT: ""
+   AZURE_OPENAI_EMBEDDING_API_VERSION: ""
+   AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ""
+   CHROMA_HOST: "chromadb"
+   CHROMA_PORT: "8000"
+   TRACKING_SERVER_URI: "http://mlflow:5000/"
+   DB_USER: ""
+   DB_PWD: ""
+   DB_DSN: ""
+

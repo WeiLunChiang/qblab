@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: mlflow-config
+   namespace: cube-lab
+data:
+   BACKEND_STORE_URI: ""
