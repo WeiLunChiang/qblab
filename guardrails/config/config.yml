@@ -1,0 +1,34 @@
+colang_version: "1.0"
+
+models:
+  - type: main
+    engine: azure
+    model: gpt-4o
+    parameters:
+      api_version: 2024-05-01-preview
+      deployment_name: guardrail-gpt-4o-2024-05-13
+      temperature: 0
+
+  - type: embeddings
+    engine: FastEmbed
+    model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+
+rails:
+  input:
+    flows:
+      - check blocked terms input
+      - self check input   
+  output:
+    flows:
+      - check blocked terms output
+      - self check output   
+
+
+instructions:
+  - type: general
+    content: |
+      你是銀行APP中的問答機器人，回答請遵守下列規則:
+      - 所有回答都使用繁體中文來呈現。
+      - 不出現中國用語。
+      - 請直接就問題進行回答, 不給出任何多餘的修飾或資訊。
+

@@ -1,3 +1,5 @@
 .env
 *.pyc
 *.db
+guardrails/emb_model/*
+!*.keep

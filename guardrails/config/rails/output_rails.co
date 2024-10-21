@@ -1,0 +1,9 @@
+define bot refuse to respond output
+  "我無法回答這個問題(output rails)"
+
+define flow self check output
+  $allowed = execute self_check_output
+
+  if not $allowed
+    bot refuse to respond output
+    stop

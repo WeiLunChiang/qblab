@@ -4,7 +4,8 @@ from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
 from src.app.setting.constant import PROMPT_GENAI_RESPONSE, CUST_DESC
-
+from nemoguardrails import RailsConfig
+from nemoguardrails.integrations.langchain.runnable_rails import RunnableRails
 
 class GenAIResponse:
 
@@ -12,7 +13,12 @@ class GenAIResponse:
         self.sessionId = sessionId
         self.customerId = customerId
         self.tone = self._set_tone()
+        self.guardrails = self._init_guardrails()
         self.chain = self._create_chain_response()
+
+    def _init_guardrails(self):
+        guardrails = RunnableRails(RailsConfig.from_path(os.environ['GUARDRAILS_CONFIG_PATH']))
+        return guardrails
 
     def _create_chain_response(self):
 
@@ -25,7 +31,7 @@ class GenAIResponse:
         prompt = ChatPromptTemplate.from_template(PROMPT_GENAI_RESPONSE)
         parser = StrOutputParser()
 
-        chain = prompt | model | parser
+        chain = prompt | (self.guardrails | model) | parser
         return chain
 
     def _set_tone(self):

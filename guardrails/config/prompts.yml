@@ -1,0 +1,32 @@
+prompts:
+
+  - task: self_check_input
+    content: |
+      您的任務是檢查user_input是否符合訊息政策。
+
+      訊息政策：
+      - 訊息應該與銀行、保險、產險、人壽、信用卡(刷卡)、貸款、存款、消費 等主題相關
+      - 訊息不應包含辱罵性語言或冒犯性的字詞
+      - 訊息不應包含諷刺或戲謔的玩笑
+      - 訊息不應包含種族敏感的內容
+    
+
+      user_input: "{{ user_input }}"
+
+      Question: Should the user message be blocked (Yes or No)?
+      Answer:
+
+
+  - task: self_check_output
+    content: |
+      您的任務是檢查bot_response是否符合訊息政策。
+      輸出政策:
+
+      - 訊息不應包含辱罵性語言或冒犯性的字詞
+      - 訊息不應包含諷刺或戲謔的玩笑
+      - 訊息不應包含種族敏感的內容
+
+      Bot message: "{{ bot_response }}"
+
+      Question: Should the message be blocked (Yes or No)?
+      Answer:

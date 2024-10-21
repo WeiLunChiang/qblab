@@ -1,0 +1,20 @@
+define bot inform cannot about input
+  "我無法回答這個問題(key words input rails)"
+
+define bot inform cannot about output
+  "我無法回答這個問題(key words output rails)"
+
+define flow check blocked terms input
+  $is_blocked = execute check_blocked_terms_input
+
+  if $is_blocked
+    bot inform cannot about input
+    abort
+
+
+define flow check blocked terms output
+  $is_blocked = execute check_blocked_terms_output
+
+  if $is_blocked
+    bot inform cannot about output
+    abort

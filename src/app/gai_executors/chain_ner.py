@@ -14,6 +14,10 @@ from src.app.vdb_connector import ChromaDBClient
 from src.app.setting.utils_retriever import RetrieveWithScore, get_metadata_runnable
 from src.app.setting.constant import PROMPT_COMPLETETION, PROMPT_QUESTION_NER
 
+from nemoguardrails import RailsConfig
+from nemoguardrails.integrations.langchain.runnable_rails import RunnableRails
+
+
 logger = logging.getLogger(__name__)
 
 class ChainNer:
@@ -32,6 +36,7 @@ class ChainNer:
         self.sessionId = sessionId
         self.customerId = customerId
         self.model = self._create_model()
+        self.guardrails = self._init_guardrails()
         self.vectorstore = self._create_vectorstore(chromaCollection)
         self.retriever = self._create_retriever(k, scoreThreshold)
         self.chian_completeion = self._create_chain_completeion(engine)
@@ -111,8 +116,14 @@ class ChainNer:
             openai_api_version=os.environ["AZURE_OPENAI_API_VERSION"],
             azure_deployment=os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"],
         )
+        
         logger.info("create_model finish")
         return model
+
+    def _init_guardrails(self):
+        guardrails = RunnableRails(RailsConfig.from_path(os.environ['GUARDRAILS_CONFIG_PATH']))
+        return guardrails
+
 
     def _create_vectorstore(self, collection_name):
         chroma_client = ChromaDBClient(collection_name=collection_name)
@@ -136,7 +147,7 @@ class ChainNer:
     def _create_chain_completeion(self, connection) -> RunnableWithMessageHistory:
         prompt = ChatPromptTemplate.from_template(PROMPT_COMPLETETION)
 
-        chain = prompt | self.model | StrOutputParser()
+        chain = prompt | (self.guardrails | self.model) | StrOutputParser()
 
         logger.info(f"connection: {connection}")
         get_chat_history = partial(SQLChatMessageHistory, connection=connection)
@@ -154,7 +165,7 @@ class ChainNer:
 
         prompt = ChatPromptTemplate.from_template(PROMPT_QUESTION_NER)
         logger.info("start json_parser_chain")
-        json_parser_chain = prompt | self.model | JsonOutputParser()
+        json_parser_chain = prompt | (self.guardrails | self.model) | JsonOutputParser()
 
         logger.info("start retriever_chain")
         retriever_chain = (
