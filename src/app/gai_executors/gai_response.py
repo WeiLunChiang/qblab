@@ -3,7 +3,8 @@ from typing import Dict, List
 from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
-from setting.constant import PROMPT_GENAI_RESPONSE, CUST_DESC
+from src.app.setting.constant import PROMPT_GENAI_RESPONSE, CUST_DESC
+
 
 class GenAIResponse:
 
@@ -83,3 +84,36 @@ class GenAIResponse:
 
         return response
 
+
+if __name__ == "__main__":
+
+    def test():
+        from dotenv import load_dotenv
+
+        load_dotenv(override=True)
+        from uuid import uuid4
+
+        sessionId = str(uuid4())
+        customerId = "A"
+        message = "我上週在蝦皮花了多少錢?"
+        consumptionNumber = "50"
+        totalAmount = "10000"
+        storeName = "蝦皮"
+        categoryName = "旅宿業"
+        tid = "B"
+        genai_response = GenAIResponse(
+            sessionId=sessionId,
+            customerId=customerId,
+        )
+
+        response = genai_response.generate_answer(
+            message=message,
+            tid=tid,
+            consumptionNumber=consumptionNumber,
+            totalAmount=totalAmount,
+            storeName=storeName,
+            categoryName=categoryName,
+        )
+        print(response)
+
+    test()

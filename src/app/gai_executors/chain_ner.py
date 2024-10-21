@@ -10,9 +10,9 @@ from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from sqlalchemy.engine import Connectable
-from app.vdb_connector import ChromaDBClient
-from setting.utils_retriever import RetrieveWithScore, get_metadata_runnable
-from setting.constant import PROMPT_COMPLETETION, PROMPT_QUESTION_NER
+from src.app.vdb_connector import ChromaDBClient
+from src.app.setting.utils_retriever import RetrieveWithScore, get_metadata_runnable
+from src.app.setting.constant import PROMPT_COMPLETETION, PROMPT_QUESTION_NER
 
 logger = logging.getLogger(__name__)
 
@@ -182,3 +182,34 @@ class ChainNer:
 
         return chain_ner
 
+
+
+
+
+if __name__ == "__main__":
+    def test():
+        from dotenv import load_dotenv
+        load_dotenv(override=True)
+        from uuid import uuid4
+
+        sessionId = str(uuid4())
+        customerId = "A"
+        userInputRaw = "過去一年我在蝦皮、優食花了多少錢?"
+
+        time = "2024/05/01 14:00:03"
+
+        chain_ner = ChainNer(
+            sessionId=sessionId,
+            customerId=customerId,
+            chromaHost=os.environ["CHROMA_HOST"],
+            chromaPort=os.environ["CHROMA_PORT"],
+            chromaCollection=os.environ["CHROMA_COLLECTION"],
+            engine=os.environ["SQL_PATH"],
+            time=time,
+        )
+
+        response = chain_ner.search(user_input=userInputRaw)
+        print(response)
+
+
+    test()
