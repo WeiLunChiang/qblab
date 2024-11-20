@@ -6,6 +6,7 @@ from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
 from src.app.setting.constant import PROMPT_GENAI_RESPONSE, CUST_DESC
 from nemoguardrails import RailsConfig
 from nemoguardrails.integrations.langchain.runnable_rails import RunnableRails
+import pandas as pd
 
 class GenAIResponse:
 
@@ -15,6 +16,8 @@ class GenAIResponse:
         self.tone = self._set_tone()
         self.guardrails = self._init_guardrails()
         self.chain = self._create_chain_response()
+        self.info_df = pd.read_excel(os.environ['INFO_PATH'])
+        self.add_info = self._get_info(self.info_df, customerId)
 
     def _init_guardrails(self):
         guardrails = RunnableRails(RailsConfig.from_path(os.environ['GUARDRAILS_CONFIG_PATH']))
@@ -42,6 +45,11 @@ class GenAIResponse:
         else:
             return "一般用戶"
 
+    def _get_info(self, df, customer_id:'str'):
+        df_tmp = df.loc[df.customer_id ==customer_id,'定義']
+        add_info = str([ix for ix in df_tmp.values])
+        return  add_info
+
     def generate_answer(
         self,
         tid: str,
@@ -68,6 +76,7 @@ class GenAIResponse:
                         "categoryName": categoryName,
                         "tone": self.tone,
                         "desc": CUST_DESC.get(self.tone),
+                        "add_info":  self.add_info,
                     }
                 )
             ):
@@ -82,7 +91,7 @@ class GenAIResponse:
 
         except Exception as e:
             response["template"]["tid"] = "98"
-            response["template"]["blockReason"] = e
+            response["template"]["blockReason"] = str(e)
 
         finally:
             response["sessionId"] = self.sessionId
@@ -100,13 +109,13 @@ if __name__ == "__main__":
         from uuid import uuid4
 
         sessionId = str(uuid4())
-        customerId = "A"
+        customerId = "C"
         message = "我上週在蝦皮花了多少錢?"
         consumptionNumber = "50"
         totalAmount = "10000"
         storeName = "蝦皮"
         categoryName = "旅宿業"
-        tid = "B"
+        tid = "C"
         genai_response = GenAIResponse(
             sessionId=sessionId,
             customerId=customerId,

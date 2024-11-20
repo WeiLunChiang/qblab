@@ -10,15 +10,12 @@ from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from sqlalchemy.engine import Connectable
-from src.app.vdb_connector import ChromaDBClient
+from src.app.db.vdb_connector import ChromaDBClient
 from src.app.setting.utils_retriever import RetrieveWithScore, get_metadata_runnable
 from src.app.setting.constant import PROMPT_COMPLETETION, PROMPT_QUESTION_NER
 
-from nemoguardrails import RailsConfig
-from nemoguardrails.integrations.langchain.runnable_rails import RunnableRails
-
-
 logger = logging.getLogger(__name__)
+
 
 class ChainNer:
     def __init__(
@@ -29,14 +26,13 @@ class ChainNer:
         engine: Connectable,
         time: str,
         k: int = 1,
-        scoreThreshold: float = 0,
+        scoreThreshold: float = 0.2,
         **kwargs,
     ):
         self.time = self._convert_time_format(time)
         self.sessionId = sessionId
         self.customerId = customerId
         self.model = self._create_model()
-        self.guardrails = self._init_guardrails()
         self.vectorstore = self._create_vectorstore(chromaCollection)
         self.retriever = self._create_retriever(k, scoreThreshold)
         self.chian_completeion = self._create_chain_completeion(engine)
@@ -50,10 +46,11 @@ class ChainNer:
         template["blockReason"] = None
         template["startDate"] = None
         template["endDate"] = None
-        template["storeName"] = [None]
-        template["categoryName"] = [None]
+        template["storeName"] = None
+        template["categoryName"] = None
         template["message"] = None
 
+        logger.info(f"Raw user input: {user_input}")
         try:
             if "被阻擋" in (
                 user_input := self.chian_completeion.invoke(
@@ -76,23 +73,31 @@ class ChainNer:
                 template["blockReason"] = "相似度過低"
 
             else:
+                template["tid"] = str(result["retriever"].get("category", None)[0])
+                template["startDate"] = str(result["keys"].get("&start_date", None))
+                template["endDate"] = str(result["keys"].get("&end_date", None))
+                if "&string1" in result["keys"]:
+                    template["storeName"] = [result["keys"].get("&string1")]
+                    if "&string2" in result["keys"]:
+                        template["storeName"].append(result["keys"].get("&string2"))
 
-                template["tid"] = result["retriever"].get("category", None)[0]
-                template["startDate"] = result["keys"].get("&start_date", None)
-                template["endDate"] = result["keys"].get("&end_date", None)
-                template["storeName"] = [
-                    result["keys"].get("&string1", None),
-                    result["keys"].get("&string2", None),
-                ]
-                template["categoryName"] = [result["keys"].get("&string", None)]
-                template["message"] = user_input
+                template["categoryName"] = (
+                    [result["keys"].get("&string")]
+                    if "&string" in result["keys"]
+                    else None
+                )
+                template["message"] = str(user_input)
 
         except Exception as e:
             template["tid"] = "99"
-            template["blockReason"] = e
+            template["blockReason"] = str(e)
 
         finally:
-
+            print(result)
+            logger.info(f"Final user input: {user_input}")
+            logger.info(
+                f"Final tid: {template['tid']}, categoryName: {template['categoryName']} "
+            )
             response["sessionId"] = self.sessionId
             response["customerId"] = self.customerId
             response["template"] = template
@@ -172,6 +177,7 @@ class ChainNer:
             RunnableLambda(lambda response: response["modify_query"])
             | self.retriever
             | {  # vectordb拉到的內容(包含SQL)
+                # "data": RunnablePassthrough(),
                 "SQL": get_metadata_runnable("SQL1", "SQL2", "SQL3"),
                 "標準問題": get_metadata_runnable("問題類別"),
                 "category": get_metadata_runnable("category"),
@@ -205,7 +211,8 @@ if __name__ == "__main__":
 
         sessionId = str(uuid4())
         customerId = "A"
-        userInputRaw = "過去一年我在蝦皮、優食花了多少錢?"
+        # userInputRaw = "可以查看本月的交通/運輸消費情況嗎？"
+        userInputRaw = "7-11的消費紀錄"
 
         time = "2024/05/01 14:00:03"
 
