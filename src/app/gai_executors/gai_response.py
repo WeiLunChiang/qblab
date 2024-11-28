@@ -9,7 +9,6 @@ from nemoguardrails.integrations.langchain.runnable_rails import RunnableRails
 import pandas as pd
 
 class GenAIResponse:
-
     def __init__(self, sessionId, customerId):
         self.sessionId = sessionId
         self.customerId = customerId
@@ -18,6 +17,8 @@ class GenAIResponse:
         self.chain = self._create_chain_response()
         self.info_df = pd.read_excel(os.environ['INFO_PATH'])
         self.add_info = self._get_info(self.info_df, customerId)
+        
+
 
     def _init_guardrails(self):
         guardrails = RunnableRails(RailsConfig.from_path(os.environ['GUARDRAILS_CONFIG_PATH']))
@@ -33,7 +34,7 @@ class GenAIResponse:
         )
         prompt = ChatPromptTemplate.from_template(PROMPT_GENAI_RESPONSE)
         parser = StrOutputParser()
-
+        # chain = prompt | model | parser
         chain = prompt | (self.guardrails | model) | parser
         return chain
 
@@ -110,12 +111,12 @@ if __name__ == "__main__":
 
         sessionId = str(uuid4())
         customerId = "C"
-        message = "我上週在蝦皮花了多少錢?"
+        message = "ERIC上週在蝦皮花了多少錢?"
         consumptionNumber = "50"
         totalAmount = "10000"
         storeName = "蝦皮"
-        categoryName = "旅宿業"
-        tid = "C"
+        categoryName = None
+        tid = "B"
         genai_response = GenAIResponse(
             sessionId=sessionId,
             customerId=customerId,
@@ -129,6 +130,7 @@ if __name__ == "__main__":
             storeName=storeName,
             categoryName=categoryName,
         )
+        print(f"message :{message}")
         print(response)
 
     test()

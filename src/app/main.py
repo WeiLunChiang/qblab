@@ -31,7 +31,6 @@ mlflow.langchain.autolog()
 
 app = FastAPI()
 
-
 # 定义路由
 @app.post("/api/card-consumption/chat")
 # @mlflow_exception_logger
@@ -58,8 +57,8 @@ async def chat(request: Request):
         )
         logger.info("Handling chat request")
         logger.info(f"message: {jdata['TRANRQ']['message']}")
-        gai_response = chain_ner.search(user_input=jdata["TRANRQ"]["message"])
-        logger.info(f"GAI Response: {gai_response}")
+        gai_response = chain_ner.search(user_input_raw=jdata["TRANRQ"]["message"])
+        logger.info(f"Chat API GAI Response: {gai_response}")
 
         # 建立 ChatTranRS 回應
         tranrs = ChatTranRS(**gai_response)
@@ -173,4 +172,4 @@ async def evaluate(request: Request):
 
 if __name__ == "__main__":    
     Base.metadata.create_all(bind=sqlalchemy_engine)
-    uvicorn.run(app="main:app", host="0.0.0.0", port=8080, reload=True)
+    uvicorn.run(app="main:app", host="0.0.0.0", port=50103, reload=True)
