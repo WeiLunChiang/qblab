@@ -35,9 +35,9 @@ class ChromaDBClient:
         :return: Azure OpenAI embedding function
         """
         openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-            api_key=os.environ["AZURE_OPENAI_EMBEDDING_API_KEY"],
+            api_key=os.environ["AZURE_OPENAI_EMBEDDING_API_KEY_UNFILTER"],
             model_name="text-embedding-3-small",
-            api_base=os.environ["AZURE_OPENAI_EMBEDDING_ENDPOINT"],
+            api_base=os.environ["AZURE_OPENAI_EMBEDDING_ENDPOINT_UNFILTER"],
             api_type="azure",
             api_version=os.environ["AZURE_OPENAI_EMBEDDING_API_VERSION"],
             deployment_id=os.environ["AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME"],
@@ -73,8 +73,8 @@ class ChromaDBClient:
         :return: Embeddings function.
         """
         embeddings = AzureOpenAIEmbeddings(
-            api_key=os.environ["AZURE_OPENAI_EMBEDDING_API_KEY"],
-            azure_endpoint=os.environ["AZURE_OPENAI_EMBEDDING_ENDPOINT"],
+            api_key=os.environ["AZURE_OPENAI_EMBEDDING_API_KEY_UNFILTER"],
+            azure_endpoint=os.environ["AZURE_OPENAI_EMBEDDING_ENDPOINT_UNFILTER"],
             azure_deployment=os.environ["AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME"],
             openai_api_version=os.environ["AZURE_OPENAI_EMBEDDING_API_VERSION"],
         )

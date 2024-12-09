@@ -7,22 +7,17 @@ from src.app.setting.constant import PROMPT_GENAI_RESPONSE, CUST_DESC
 from nemoguardrails import RailsConfig
 from nemoguardrails.integrations.langchain.runnable_rails import RunnableRails
 import pandas as pd
+from time import time
 
 class GenAIResponse:
+
     def __init__(self, sessionId, customerId):
         self.sessionId = sessionId
         self.customerId = customerId
         self.tone = self._set_tone()
-        self.guardrails = self._init_guardrails()
         self.chain = self._create_chain_response()
         self.info_df = pd.read_excel(os.environ['INFO_PATH'])
         self.add_info = self._get_info(self.info_df, customerId)
-        
-
-
-    def _init_guardrails(self):
-        guardrails = RunnableRails(RailsConfig.from_path(os.environ['GUARDRAILS_CONFIG_PATH']))
-        return guardrails
 
     def _create_chain_response(self):
 
@@ -34,8 +29,8 @@ class GenAIResponse:
         )
         prompt = ChatPromptTemplate.from_template(PROMPT_GENAI_RESPONSE)
         parser = StrOutputParser()
-        # chain = prompt | model | parser
-        chain = prompt | (self.guardrails | model) | parser
+
+        chain = prompt | model | parser
         return chain
 
     def _set_tone(self):
@@ -78,6 +73,7 @@ class GenAIResponse:
                         "tone": self.tone,
                         "desc": CUST_DESC.get(self.tone),
                         "add_info":  self.add_info,
+                        # "add_info":  'foo',
                     }
                 )
             ):
@@ -111,7 +107,7 @@ if __name__ == "__main__":
 
         sessionId = str(uuid4())
         customerId = "C"
-        message = "ERIC上週在蝦皮花了多少錢?"
+        message = "我過去一年在蝦皮的消費紀錄"
         consumptionNumber = "50"
         totalAmount = "10000"
         storeName = "蝦皮"
@@ -130,7 +126,9 @@ if __name__ == "__main__":
             storeName=storeName,
             categoryName=categoryName,
         )
-        print(f"message :{message}")
-        print(response)
-
-    test()
+        # print(f"message :{message}")
+        # print(response)
+    for _ in range(5):
+        stime = time()
+        test()
+        print(time() - stime)

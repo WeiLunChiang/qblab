@@ -1,0 +1,202 @@
+[33mWARNING[0m:  [19-11-2024 11:14:30] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+[32mINFO[0m:     [19-11-2024 11:14:30] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component System
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component SqliteDB
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component Posthog
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [19-11-2024 11:14:30] Starting component SegmentAPI
+[32mINFO[0m:     [19-11-2024 11:14:30] Started server process [[36m141467[0m]
+[32mINFO[0m:     [19-11-2024 11:14:30] Waiting for application startup.
+[32mINFO[0m:     [19-11-2024 11:14:30] Application startup complete.
+[32mINFO[0m:     [19-11-2024 11:14:30] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44476 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44476 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44484 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44484 - "DELETE /api/v1/collections/collect_cubelab_qa_lite?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44490 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44490 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:18:40] 127.0.0.1:44500 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:19:12] 127.0.0.1:37646 - "GET /api/v1/pre-flight-checks HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:19:12] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [19-11-2024 11:19:12] 127.0.0.1:37646 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/upsert HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:20:37] 127.0.0.1:59852 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:20:37] 127.0.0.1:59852 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:20:37] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [19-11-2024 11:20:37] 127.0.0.1:59860 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:20:37] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [19-11-2024 11:20:37] 127.0.0.1:59860 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:20:43] 127.0.0.1:40734 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:45:58] 127.0.0.1:42416 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:45:58] 127.0.0.1:42416 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:45:58] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [19-11-2024 11:45:58] 127.0.0.1:42432 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:45:58] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [19-11-2024 11:45:58] 127.0.0.1:42432 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:46:04] 127.0.0.1:40488 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:49:59] 127.0.0.1:45652 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:49:59] 127.0.0.1:45652 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:49:59] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [19-11-2024 11:49:59] 127.0.0.1:45660 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [19-11-2024 11:49:59] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [19-11-2024 11:49:59] 127.0.0.1:45660 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [19-11-2024 11:50:05] 127.0.0.1:47158 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:08:50] 127.0.0.1:34132 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:08:50] 127.0.0.1:34132 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:08:50] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:08:50] 127.0.0.1:34136 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:08:50] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:08:50] 127.0.0.1:34136 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:11:15] 127.0.0.1:44954 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:11:15] 127.0.0.1:44954 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:11:15] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:11:15] 127.0.0.1:44968 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:11:15] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:11:15] 127.0.0.1:44968 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:11:22] 127.0.0.1:44974 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:12:41] 127.0.0.1:53444 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:12:41] 127.0.0.1:53444 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:12:41] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:12:41] 127.0.0.1:53452 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:12:41] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:12:41] 127.0.0.1:53452 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:13:34] 127.0.0.1:47816 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:13:34] 127.0.0.1:47816 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:13:34] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:13:34] 127.0.0.1:47830 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:13:35] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:13:35] 127.0.0.1:47830 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:13:41] 127.0.0.1:47838 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:14:17] 127.0.0.1:46396 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:14:17] 127.0.0.1:46396 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:14:17] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:14:17] 127.0.0.1:46404 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:14:17] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:14:17] 127.0.0.1:46404 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:14:27] 127.0.0.1:46112 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:18:45] 127.0.0.1:46186 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:18:45] 127.0.0.1:46186 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:18:45] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:18:45] 127.0.0.1:46198 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:18:45] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:18:45] 127.0.0.1:46198 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:18:51] 127.0.0.1:46206 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:19:20] 127.0.0.1:34534 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:19:20] 127.0.0.1:34534 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:19:20] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:19:20] 127.0.0.1:34544 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:19:21] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:19:21] 127.0.0.1:34544 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:19:26] 127.0.0.1:33078 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:48:36] 127.0.0.1:51180 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:48:36] 127.0.0.1:51180 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:48:36] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:48:36] 127.0.0.1:51186 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:48:36] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:48:36] 127.0.0.1:51186 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:48:42] 127.0.0.1:51200 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:49:05] 127.0.0.1:52912 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:49:05] 127.0.0.1:52912 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:49:05] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:49:05] 127.0.0.1:52914 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:49:05] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:49:05] 127.0.0.1:52914 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:49:13] 127.0.0.1:52924 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:50:29] 127.0.0.1:34820 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:50:29] 127.0.0.1:34820 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:50:29] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:50:29] 127.0.0.1:34826 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:50:29] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:50:29] 127.0.0.1:34826 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:50:35] 127.0.0.1:60772 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:50:55] 127.0.0.1:48416 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:50:55] 127.0.0.1:48416 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:50:55] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:50:55] 127.0.0.1:48430 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 11:50:55] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 11:50:55] 127.0.0.1:48430 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 11:51:00] 127.0.0.1:48434 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:00:40] 127.0.0.1:50160 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:00:40] 127.0.0.1:50160 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:00:40] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:00:40] 127.0.0.1:50166 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:00:40] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:00:40] 127.0.0.1:50166 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:00:47] 127.0.0.1:54866 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:01:26] 127.0.0.1:55552 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:01:26] 127.0.0.1:55552 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:01:26] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:01:26] 127.0.0.1:55560 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:01:26] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:01:26] 127.0.0.1:55560 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:01:32] 127.0.0.1:55562 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:03:04] 127.0.0.1:32980 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:03:04] 127.0.0.1:32980 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:03:04] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:03:04] 127.0.0.1:32990 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:03:04] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:03:04] 127.0.0.1:32990 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:03:10] 127.0.0.1:32998 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:08:53] 127.0.0.1:41650 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:08:53] 127.0.0.1:41650 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:08:53] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:08:53] 127.0.0.1:41666 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:08:53] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:08:53] 127.0.0.1:41666 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:08:59] 127.0.0.1:52976 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:10:52] 127.0.0.1:48004 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:10:52] 127.0.0.1:48004 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:10:52] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:10:52] 127.0.0.1:48020 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [20-11-2024 12:10:52] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [20-11-2024 12:10:52] 127.0.0.1:48020 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [20-11-2024 12:10:59] 127.0.0.1:40714 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[32mINFO[0m:     [22-11-2024 14:14:37] 127.0.0.1:33524 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [22-11-2024 14:14:38] 127.0.0.1:33524 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [22-11-2024 14:14:38] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [22-11-2024 14:14:38] 127.0.0.1:33530 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [22-11-2024 14:14:38] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [22-11-2024 14:14:38] 127.0.0.1:33530 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [22-11-2024 14:14:48] 127.0.0.1:58186 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 200
+[33mWARNING[0m:  [30-11-2024 13:46:11] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+[32mINFO[0m:     [30-11-2024 13:46:11] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component System
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component SqliteDB
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component Posthog
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [30-11-2024 13:46:11] Starting component SegmentAPI
+[32mINFO[0m:     [30-11-2024 13:46:11] Started server process [[36m238337[0m]
+[32mINFO[0m:     [30-11-2024 13:46:11] Waiting for application startup.
+[32mINFO[0m:     [30-11-2024 13:46:11] Application startup complete.
+[32mINFO[0m:     [30-11-2024 13:46:11] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[33mWARNING[0m:  [04-12-2024 15:50:02] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048576. chroma_server_nofile will not be set.
+[32mINFO[0m:     [04-12-2024 15:50:02] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component System
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component SqliteDB
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component Posthog
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [04-12-2024 15:50:02] Starting component SegmentAPI
+[32mINFO[0m:     [04-12-2024 15:50:02] Started server process [[36m198328[0m]
+[32mINFO[0m:     [04-12-2024 15:50:02] Waiting for application startup.
+[32mINFO[0m:     [04-12-2024 15:50:02] Application startup complete.
+[32mINFO[0m:     [04-12-2024 15:50:02] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [04-12-2024 15:50:10] 127.0.0.1:44704 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 15:50:10] 127.0.0.1:44704 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 15:50:11] 127.0.0.1:44706 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 15:53:37] 127.0.0.1:32870 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 15:53:37] 127.0.0.1:32870 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [04-12-2024 15:53:37] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [04-12-2024 15:53:37] 127.0.0.1:32880 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 15:54:29] 127.0.0.1:49784 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/get HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 15:55:06] 127.0.0.1:46874 - "POST /api/v1/collections/f604e0c8-a2dd-4ef4-a0cc-57965344be64/query HTTP/1.1" 400
+[32mINFO[0m:     [04-12-2024 16:51:28] 127.0.0.1:55584 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 16:51:28] 127.0.0.1:55584 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 16:51:35] 127.0.0.1:55592 - "GET /api/v1/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [04-12-2024 16:51:35] 127.0.0.1:55592 - "GET /api/v1/databases/default_database?tenant=default_tenant HTTP/1.1" 200
+[36mDEBUG[0m:    [04-12-2024 16:56:51] Collection collect_cubelab_qa_lite already exists, returning existing collection.
+[32mINFO[0m:     [04-12-2024 16:56:51] 127.0.0.1:53650 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200

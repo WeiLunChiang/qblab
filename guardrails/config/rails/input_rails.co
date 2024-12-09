@@ -1,5 +1,5 @@
 define bot refuse to respond input
-  "我無法回答這個問題(input rails)"
+  "我無法回答這個問題(input rails)被阻擋"
 
 define flow self check input
   $allowed = execute self_check_input
